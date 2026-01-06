@@ -1,10 +1,10 @@
 {
   "name": "3D Print Cost",
-  "short_name": "3DPrint",
-  "start_url": "./index.html",
+  "short_name": "3D Print Cost",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#121212",
-  "theme_color": "#8a2be2",
+  "theme_color": "#121212",
   "icons": [
     {
       "src": "icon-192.png",
