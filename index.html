@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Print Cost</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 10px;
+  }
+
+  .app-container {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  h1 {
+    font-weight: 600;
+    font-size: 28px;
+    text-align: center;
+    margin: 0;
+  }
+
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .input-row label {
+    width: 50px;
+    text-align: right;
+    font-weight: 500;
+  }
+
+  .input-row select, .input-row input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background-color: #2a2a2a;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.5);
+  }
+
+  .input-row input::placeholder {
+    color: #888;
+  }
+
+  button {
+    width: 100%;
+    padding: 16px;
+    background-color: #8a2be2;
+    color: #fff;
+    font-weight: 600;
+    font-size: 17px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(138,43,226,0.6);
+    transition: all 0.3s ease;
+  }
+
+  button:active {
+    transform: translateY(2px);
+    box-shadow: 0 4px 12px rgba(138,43,226,0.6);
+  }
+
+  .result {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    padding: 18px;
+  }
+
+  @media (max-width: 400px) {
+    .input-row label {
+      font-size: 14px;
+    }
+    .input-row select, .input-row input {
+      font-size: 14px;
+      padding: 10px;
+    }
+    button {
+      font-size: 16px;
+      padding: 14px;
+    }
+    .result {
+      font-size: 22px;
+      padding: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="app-container">
+  <h1>3D Print Cost</h1>
+
+  <div class="input-row">
+    <label>1</label>
+    <select id="filament1">
+      <option value="">Select</option>
+      <option value="Red - Elegoo PLA+">Red - Elegoo PLA+</option>
+      <option value="Tan - Elegoo PLA Matte">Tan - Elegoo PLA Matte</option>
+      <option value="Grey - Elegoo PLA+">Grey - Elegoo PLA+</option>
+      <option value="White - eSUN PLA+">White - eSUN PLA+</option>
+      <option value="Black - eSUN PLA Matte">Black - eSUN PLA Matte</option>
+      <option value="Yellow - Elegoo PLA+">Yellow - Elegoo PLA+</option>
+      <option value="Orange - Elegoo PLA+">Orange - Elegoo PLA+</option>
+    </select>
+    <input type="number" id="grams1" placeholder="g">
+  </div>
+
+  <div class="input-row">
+    <label>2</label>
+    <select id="filament2">
+      <option value="">Select</option>
+      <option value="Red - Elegoo PLA+">Red - Elegoo PLA+</option>
+      <option value="Tan - Elegoo PLA Matte">Tan - Elegoo PLA Matte</option>
+      <option value="Grey - Elegoo PLA+">Grey - Elegoo PLA+</option>
+      <option value="White - eSUN PLA+">White - eSUN PLA+</option>
+      <option value="Black - eSUN PLA Matte">Black - eSUN PLA Matte</option>
+      <option value="Yellow - Elegoo PLA+">Yellow - Elegoo PLA+</option>
+      <option value="Orange - Elegoo PLA+">Orange - Elegoo PLA+</option>
+    </select>
+    <input type="number" id="grams2" placeholder="g">
+  </div>
+
+  <div class="input-row">
+    <label>3</label>
+    <select id="filament3">
+      <option value="">Select</option>
+      <option value="Red - Elegoo PLA+">Red - Elegoo PLA+</option>
+      <option value="Tan - Elegoo PLA Matte">Tan - Elegoo PLA Matte</option>
+      <option value="Grey - Elegoo PLA+">Grey - Elegoo PLA+</option>
+      <option value="White - eSUN PLA+">White - eSUN PLA+</option>
+      <option value="Black - eSUN PLA Matte">Black - eSUN PLA Matte</option>
+      <option value="Yellow - Elegoo PLA+">Yellow - Elegoo PLA+</option>
+      <option value="Orange - Elegoo PLA+">Orange - Elegoo PLA+</option>
+    </select>
+    <input type="number" id="grams3" placeholder="g">
+  </div>
+
+  <div class="input-row">
+    <label>4</label>
+    <select id="filament4">
+      <option value="">Select</option>
+      <option value="Red - Elegoo PLA+">Red - Elegoo PLA+</option>
+      <option value="Tan - Elegoo PLA Matte">Tan - Elegoo PLA Matte</option>
+      <option value="Grey - Elegoo PLA+">Grey - Elegoo PLA+</option>
+      <option value="White - eSUN PLA+">White - eSUN PLA+</option>
+      <option value="Black - eSUN PLA Matte">Black - eSUN PLA Matte</option>
+      <option value="Yellow - Elegoo PLA+">Yellow - Elegoo PLA+</option>
+      <option value="Orange - Elegoo PLA+">Orange - Elegoo PLA+</option>
+    </select>
+    <input type="number" id="grams4" placeholder="g">
+  </div>
+
+  <div class="input-row">
+    <label>Hours</label>
+    <input type="number" id="hours" placeholder="hours">
+  </div>
+
+  <button onclick="calculate()">Calculate Price</button>
+
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+const prices = {
+  "Red - Elegoo PLA+": 4.12,
+  "Tan - Elegoo PLA Matte": 5.15,
+  "Grey - Elegoo PLA+": 4.80,
+  "White - eSUN PLA+": 5.15,
+  "Black - eSUN PLA Matte": 6.50,
+  "Yellow - Elegoo PLA+": 3.86,
+  "Orange - Elegoo PLA+": 3.69
+};
+
+const machineCostPerHour = 20; // fixed for electricity/machine
+
+function calculate() {
+  let total = 0;
+  for (let i = 1; i <= 4; i++) {
+    const fil = document.getElementById('filament'+i).value;
+    const grams = parseFloat(document.getElementById('grams'+i).value);
+    if (fil && grams) total += prices[fil] * grams;
+  }
+
+  const hours = parseFloat(document.getElementById('hours').value);
+  if (hours) total += hours * machineCostPerHour;
+
+  let finalPrice = total * 3.5; // 3.5 multiplier
+  finalPrice = Math.ceil(finalPrice / 100) * 100; // round up to nearest 100
+
+  document.getElementById('result').innerText = "Rs. " + finalPrice;
+}
+</script>
+</body>
+</html>
